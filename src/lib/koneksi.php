@@ -1,13 +1,13 @@
 <?php
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$db   = "tepatkasir";
+$$host     = "sql306.infinityfree.com"; // Ubah dengan MySQL Hostname dari InfinityFree
+$user     = "if0_42355814";             // Ubah dengan MySQL Username dari InfinityFree
+$password = "rEv8Z2FfUO";     // Ubah dengan MySQL Password kamu
+$database = "if0_42355814_TepatKasir";    // Ubah dengan Nama Database di InfinityFree
 
-$conn = mysqli_connect($hostname, $username, $password, $db);
+$conn = mysqli_connect($host, $user, $password, $database);
 
-if (!$conn) {
-    die("Koneksi database gagal: " . mysqli_connect_error());
+if (mysqli_connect_errno()) {
+    echo "Koneksi database gagal : " . mysqli_connect_error();
 }
 
 // Cek dan tambah kolom 'satuan' di tabel produk
@@ -29,7 +29,7 @@ mysqli_query($conn, "ALTER TABLE produk ENGINE=InnoDB");
 
 // Tambahkan Relasi Foreign Key (FK) 
 try {
-    $cek_fk = mysqli_query($conn, "SELECT CONSTRAINT_NAME FROM information_schema.TABLE_CONSTRAINTS WHERE CONSTRAINT_SCHEMA = 'tepatkasir' AND TABLE_NAME = 'transaksi' AND CONSTRAINT_TYPE = 'FOREIGN KEY' AND CONSTRAINT_NAME = 'fk_transaksi_kasir'");
+    $cek_fk = mysqli_query($conn, "SELECT CONSTRAINT_NAME FROM information_schema.TABLE_CONSTRAINTS WHERE CONSTRAINT_SCHEMA = 'if0_42355814_TepatKasir' AND TABLE_NAME = 'transaksi' AND CONSTRAINT_TYPE = 'FOREIGN KEY' AND CONSTRAINT_NAME = 'fk_transaksi_kasir'");
     if ($cek_fk && mysqli_num_rows($cek_fk) == 0) {
         // Amankan data yatim (orphan): Jika ada kasir_id di transaksi yang usernya sudah dihapus,
         // alihkan sementara ke user pertama agar tidak menyebabkan error Foreign Key dan data penjualan tidak hilang.
