@@ -1,5 +1,5 @@
 <?php
-$$host     = "sql306.infinityfree.com"; // Ubah dengan MySQL Hostname dari InfinityFree
+$host     = "sql306.infinityfree.com"; // Ubah dengan MySQL Hostname dari InfinityFree
 $user     = "if0_42355814";             // Ubah dengan MySQL Username dari InfinityFree
 $password = "rEv8Z2FfUO";     // Ubah dengan MySQL Password kamu
 $database = "if0_42355814_TepatKasir";    // Ubah dengan Nama Database di InfinityFree
